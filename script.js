@@ -43,11 +43,10 @@ function parseCSV(text) {
 }
 
 function rowsToCostumes(rows) {
-  // Очікувані колонки: № | Назва | Фото | Категорія | Теги | Розмір | Ціна | Технічний стовпчик (фото для сайту)
   const costumes = [];
-  for (let i = 1; i < rows.length; i++) { // пропускаємо заголовок
+  for (let i = 1; i < rows.length; i++) {
     const r = rows[i];
-    if (!r || !r[0] || !r[1]) continue; // порожній рядок або немає назви — пропускаємо
+    if (!r || !r[0] || !r[1]) continue;
     const id = (r[0] || "").trim();
     const name = (r[1] || "").trim();
     const categoriesRaw = (r[3] || "").trim();
@@ -78,18 +77,17 @@ let activeCategory = "Всі";
 let searchQuery = "";
 let stash = loadStash();
 
-// ======================= DOM =======================
+// ======================= DOM (усі елементи оголошено ДО init(), щоб уникнути помилок доступу) =======================
 const grid = document.getElementById("catalog-grid");
 const sentinel = document.getElementById("scroll-sentinel");
 const categoryNav = document.getElementById("category-nav");
 const searchInput = document.getElementById("search-input");
 const stashFab = document.getElementById("stash-fab");
 const stashCount = document.getElementById("stash-count");
-
-// Overlay/sheet elements — must be declared before init() runs, since
-// setupOverlayClose() (called inside init()) references them.
 const overlay = document.getElementById("product-overlay");
 const sheet = document.getElementById("product-sheet");
+const stashPanel = document.getElementById("stash-panel");
+const stashList = document.getElementById("stash-list");
 
 const CATEGORIES = [
   "Жіночі", "Чоловічі", "Новорічні", "Геловін", "Весняні", "Осінні",
@@ -228,7 +226,6 @@ function openProduct(costume) {
     const nowSaved = stash.includes(costume.id);
     btn.classList.toggle("saved", nowSaved);
     btn.textContent = nowSaved ? "Відкладено ✓" : "Відкласти";
-    // синхронізуємо сердечко на картці, якщо вона на екрані
     refreshHeartIcons(costume.id, nowSaved);
   });
   overlay.classList.add("open");
@@ -274,9 +271,6 @@ function updateStashCount() {
   stashCount.textContent = stash.length;
   stashFab.style.display = "flex";
 }
-
-const stashPanel = document.getElementById("stash-panel");
-const stashList = document.getElementById("stash-list");
 
 function setupStashUI() {
   stashFab.addEventListener("click", openStashPanel);
