@@ -446,42 +446,6 @@ button { font-family: inherit; cursor: pointer; }
   font-size: 14px;
 }
 
-.download-cta {
-  display: block;
-  width: 100%;
-  margin: 18px 0 0;
-  border: none;
-  border-radius: var(--radius);
-  background: var(--accent);
-  color: #fff;
-  font-weight: 700;
-  font-size: 14.5px;
-  padding: 13px 20px;
-}
-.download-cta:active { background: var(--accent-dark); }
-
-.screenshot-cta {
-  display: block;
-  margin: 10px auto 0;
-  border: none;
-  background: transparent;
-  color: var(--text-soft);
-  font-weight: 600;
-  font-size: 13px;
-  padding: 8px;
-  text-decoration: underline;
-}
-
-.screenshot-tip {
-  margin: 10px 0 0;
-  padding: 12px 14px;
-  background: var(--card-bg);
-  border-radius: 12px;
-  font-size: 12.5px;
-  line-height: 1.5;
-  color: var(--text-soft);
-}
-
 /* ---------- Phone modal ---------- */
 .phone-modal {
   position: fixed;
