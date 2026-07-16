@@ -230,26 +230,25 @@ button { font-family: inherit; cursor: pointer; }
   align-items: flex-end;
   justify-content: center;
   z-index: 100;
+  padding: 0;
 }
 .overlay.open { display: flex; }
 
 @media (min-width: 640px) {
-  .overlay { align-items: center; }
+  .overlay { align-items: center; padding: 20px; }
 }
 
+/* --- Mobile: compact bottom sheet, photo sized so everything fits without scrolling --- */
 .product-sheet {
   background: var(--accent);
   color: #fff;
   width: 100%;
   max-width: 480px;
-  max-height: 90vh;
+  max-height: 92vh;
   overflow-y: auto;
   border-radius: 22px 22px 0 0;
-  padding: 0 0 24px;
+  padding: 0 0 20px;
   position: relative;
-}
-@media (min-width: 640px) {
-  .product-sheet { border-radius: 22px; }
 }
 
 .product-sheet .close-btn {
@@ -269,20 +268,22 @@ button { font-family: inherit; cursor: pointer; }
 
 .product-sheet .photo-wrap {
   width: 100%;
-  aspect-ratio: 1080 / 1350;
+  height: 34vh;
+  min-height: 200px;
+  max-height: 300px;
   overflow: hidden;
   background: rgba(255,255,255,0.15);
 }
 .product-sheet img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-.product-details { padding: 18px 22px 4px; }
+.product-details { padding: 16px 20px 2px; }
 
 .detail-row {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   gap: 12px;
-  padding: 13px 0;
+  padding: 11px 0;
   border-bottom: 1px solid rgba(255,255,255,0.3);
 }
 .detail-row:last-of-type { border-bottom: none; }
@@ -299,11 +300,11 @@ button { font-family: inherit; cursor: pointer; }
   text-align: right;
 }
 .detail-row.title-row .value {
-  font-size: 20px;
+  font-size: 19px;
   font-family: var(--font-display);
 }
 .detail-row.title-row .label {
-  font-size: 18px;
+  font-size: 17px;
   font-family: var(--font-display);
   text-transform: none;
   opacity: 1;
@@ -311,17 +312,49 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .stash-btn {
-  margin: 16px 22px 0;
-  width: calc(100% - 44px);
+  margin: 14px 20px 0;
+  width: calc(100% - 40px);
   border: 1.5px solid #fff;
   border-radius: var(--radius);
   background: #fff;
   color: var(--accent-dark);
   font-weight: 700;
   font-size: 15px;
-  padding: 13px;
+  padding: 12px;
 }
 .stash-btn.saved { background: transparent; color: #fff; }
+
+/* --- Wider screens (tablet/desktop): photo and details side by side, no scrolling --- */
+@media (min-width: 640px) {
+  .product-sheet {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: 100%;
+    max-width: 780px;
+    height: min(520px, 82vh);
+    max-height: 82vh;
+    border-radius: 22px;
+    overflow: hidden;
+    padding: 0;
+  }
+  .product-sheet .photo-wrap {
+    flex: 0 0 46%;
+    width: auto;
+    height: 100%;
+    max-height: none;
+    min-height: 0;
+  }
+  .product-sheet .right-col {
+    flex: 1 1 54%;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow-y: auto;
+  }
+  .product-details { padding: 26px 28px 4px; }
+  .stash-btn { margin: 18px 28px 24px; width: calc(100% - 56px); margin-top: auto; }
+}
 
 /* ---------- Stash (Відкладені) panel ---------- */
 .stash-fab {
