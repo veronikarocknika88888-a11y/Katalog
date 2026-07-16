@@ -278,6 +278,14 @@ function setupStashUI() {
   stashFab.addEventListener("click", openStashPanel);
   document.getElementById("stash-close").addEventListener("click", () => stashPanel.classList.remove("open"));
   stashPanel.addEventListener("click", (e) => { if (e.target === stashPanel) stashPanel.classList.remove("open"); });
+
+  const screenshotBtn = document.getElementById("screenshot-cta");
+  const screenshotTip = document.getElementById("screenshot-tip");
+  if (screenshotBtn && screenshotTip) {
+    screenshotBtn.addEventListener("click", () => {
+      screenshotTip.hidden = !screenshotTip.hidden;
+    });
+  }
 }
 
 function openStashPanel() {
