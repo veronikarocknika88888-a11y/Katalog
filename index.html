@@ -13,7 +13,7 @@
 <header class="site-header">
   <div class="logo-wrap">
     <!-- ЗАМІНІТЬ logo-placeholder.svg на ваш файл логотипу (наприклад logo.png) -->
-    <img src="Логок.png" alt="Karnaval Studio">
+    <img src="logo-placeholder.svg" alt="Karnaval Studio">
   </div>
 
   <form class="search-form" onsubmit="return false;">
@@ -79,8 +79,13 @@
   <div class="stash-sheet">
     <button class="close-btn" id="stash-close" style="position:absolute; top:14px; right:14px; background:var(--card-bg); color:var(--text);">&times;</button>
     <h2>Відкладені костюми</h2>
-    <p class="stash-hint">Це просто список для порівняння — покупки на сайті немає. Зробіть скриншот і надішліть нам зручним способом.</p>
+    <p class="stash-hint">Каталог використовується лише для ознайомлення. Якщо хочете поділитися списком костюмів, які вам сподобалися, будь ласка, зробіть скриншот і надішліть його нам в Instagram, Telegram або Viber. Ми перевіримо наявність костюмів і обговоримо всі деталі. Дякуємо! 🙏🙏🙏</p>
     <div id="stash-list"></div>
+    <button class="screenshot-cta" id="screenshot-cta">Зробіть скріншот</button>
+    <p class="screenshot-tip" id="screenshot-tip" hidden>
+      <strong>На телефоні:</strong> одночасно натисніть кнопку блокування та гучність вниз (iPhone) або кнопку живлення та гучність вниз (Android).<br>
+      <strong>На комп'ютері:</strong> клавіша PrtScn, або Win + Shift + S (Windows), Cmd + Shift + 4 (Mac).
+    </p>
   </div>
 </div>
 
