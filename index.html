@@ -81,7 +81,8 @@
     <h2>Відкладені костюми</h2>
     <p class="stash-hint">Каталог використовується лише для ознайомлення. Якщо хочете поділитися списком костюмів, які вам сподобалися, будь ласка, зробіть скриншот і надішліть його нам в Instagram, Telegram або Viber. Ми перевіримо наявність костюмів і обговоримо всі деталі. Дякуємо! 🙏🙏🙏</p>
     <div id="stash-list"></div>
-    <button class="screenshot-cta" id="screenshot-cta">Зробіть скріншот</button>
+    <button class="download-cta" id="download-list-btn">Завантажити картинку зі списком</button>
+    <button class="screenshot-cta" id="screenshot-cta">Або зробіть скриншот вручну</button>
     <p class="screenshot-tip" id="screenshot-tip" hidden>
       <strong>На телефоні:</strong> одночасно натисніть кнопку блокування та гучність вниз (iPhone) або кнопку живлення та гучність вниз (Android).<br>
       <strong>На комп'ютері:</strong> клавіша PrtScn, або Win + Shift + S (Windows), Cmd + Shift + 4 (Mac).
@@ -99,6 +100,7 @@
   </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
