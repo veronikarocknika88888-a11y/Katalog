@@ -207,17 +207,19 @@ function openProduct(costume) {
   sheet.innerHTML = `
     <button class="close-btn" aria-label="Закрити">&times;</button>
     <div class="photo-wrap"><img src="${escapeHtml(costume.photo)}" alt="${escapeHtml(costume.name)}"></div>
-    <div class="product-details">
-      <div class="detail-row title-row">
-        <span class="label">${escapeHtml(costume.name)}</span>
-        <span class="value">${escapeHtml(costume.price)} грн</span>
+    <div class="right-col">
+      <div class="product-details">
+        <div class="detail-row title-row">
+          <span class="label">${escapeHtml(costume.name)}</span>
+          <span class="value">${escapeHtml(costume.price)} грн</span>
+        </div>
+        <div class="detail-row"><span class="label">Категорія</span><span class="value">${escapeHtml(costume.categories.join(", ") || "—")}</span></div>
+        <div class="detail-row"><span class="label">Теги</span><span class="value">${escapeHtml(costume.tags.join(", ") || "—")}</span></div>
+        <div class="detail-row"><span class="label">Розмір</span><span class="value">${escapeHtml(costume.size || "—")}</span></div>
+        <div class="detail-row"><span class="label">Артикул</span><span class="value">№ ${escapeHtml(costume.id)}</span></div>
       </div>
-      <div class="detail-row"><span class="label">Категорія</span><span class="value">${escapeHtml(costume.categories.join(", ") || "—")}</span></div>
-      <div class="detail-row"><span class="label">Теги</span><span class="value">${escapeHtml(costume.tags.join(", ") || "—")}</span></div>
-      <div class="detail-row"><span class="label">Розмір</span><span class="value">${escapeHtml(costume.size || "—")}</span></div>
-      <div class="detail-row"><span class="label">Артикул</span><span class="value">№ ${escapeHtml(costume.id)}</span></div>
+      <button class="stash-btn${isSaved ? " saved" : ""}" data-id="${escapeHtml(costume.id)}">${isSaved ? "Відкладено ✓" : "Відкласти"}</button>
     </div>
-    <button class="stash-btn${isSaved ? " saved" : ""}" data-id="${escapeHtml(costume.id)}">${isSaved ? "Відкладено ✓" : "Відкласти"}</button>
   `;
   sheet.querySelector(".close-btn").addEventListener("click", closeProduct);
   sheet.querySelector(".stash-btn").addEventListener("click", (e) => {
