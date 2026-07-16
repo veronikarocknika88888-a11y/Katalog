@@ -338,7 +338,7 @@ button { font-family: inherit; cursor: pointer; }
     flex-direction: row;
     align-items: stretch;
     width: 100%;
-    max-width: 860px;
+    max-width: 940px;
     height: min(520px, 82vh);
     max-height: 82vh;
     border-radius: 22px;
@@ -346,21 +346,26 @@ button { font-family: inherit; cursor: pointer; }
     padding: 0;
   }
   .product-sheet .photo-wrap {
-    flex: 0 0 46%;
+    flex: 0 0 38%;
     width: auto;
     height: 100%;
     max-height: none;
     min-height: 0;
   }
   .product-sheet .right-col {
-    flex: 1 1 54%;
+    flex: 1 1 62%;
     display: flex;
     flex-direction: column;
     min-width: 0;
     overflow-y: auto;
+    padding: 28px 32px 26px;
   }
-  .product-details { padding: 26px 28px 4px; }
-  .stash-btn { margin: 18px 28px 24px; width: calc(100% - 56px); margin-top: auto; }
+  .product-details { padding: 0; }
+  .stash-btn {
+    margin: 20px 0 0;
+    width: 100%;
+    margin-top: auto;
+  }
 }
 
 /* ---------- Stash (Відкладені) panel ---------- */
