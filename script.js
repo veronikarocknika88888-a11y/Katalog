@@ -286,6 +286,57 @@ function setupStashUI() {
       screenshotTip.hidden = !screenshotTip.hidden;
     });
   }
+
+  const downloadBtn = document.getElementById("download-list-btn");
+  if (downloadBtn) {
+    downloadBtn.addEventListener("click", generateStashImage);
+  }
+}
+
+async function generateStashImage() {
+  const items = ALL_COSTUMES.filter(c => stash.includes(c.id));
+  if (!items.length) {
+    alert("Спочатку відкладіть хоча б один костюм (натисніть на сердечко біля фото).");
+    return;
+  }
+  if (typeof html2canvas === "undefined") {
+    if (document.getElementById("screenshot-tip")) document.getElementById("screenshot-tip").hidden = false;
+    return;
+  }
+
+  const wrap = document.createElement("div");
+  wrap.style.cssText = "position:fixed; left:-9999px; top:0; width:380px; background:#FAF7F0; padding:22px; font-family:'Manrope', system-ui, sans-serif; color:#2E2A22;";
+  wrap.innerHTML = `
+    <div style="font-family:'Fraunces', Georgia, serif; font-size:20px; font-weight:700; margin-bottom:18px;">Обрані костюми — Karnaval Studio</div>
+    ${items.map(c => `
+      <div style="display:flex; gap:12px; align-items:center; padding:10px 0; border-bottom:1px solid #D8D2C2;">
+        <img crossorigin="anonymous" src="${escapeHtml(c.photo)}" style="width:64px;height:80px;object-fit:cover;border-radius:8px;background:#E8E3D6;">
+        <div style="min-width:0;">
+          <div style="font-weight:700; font-size:14px;">${escapeHtml(c.name)}</div>
+          <div style="font-size:12px; color:#6B6656; margin-top:2px;">Артикул № ${escapeHtml(c.id)} · ${escapeHtml(c.price)} грн</div>
+        </div>
+      </div>
+    `).join("")}
+  `;
+  document.body.appendChild(wrap);
+
+  try {
+    const canvas = await html2canvas(wrap, { backgroundColor: "#FAF7F0", useCORS: true, scale: 2 });
+    const dataUrl = canvas.toDataURL("image/png");
+    const link = document.createElement("a");
+    link.download = "obrani-kostyumy.png";
+    link.href = dataUrl;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  } catch (err) {
+    console.error("Не вдалося створити зображення автоматично:", err);
+    const tip = document.getElementById("screenshot-tip");
+    if (tip) tip.hidden = false;
+    alert("Не вдалося автоматично зібрати картинку (можливо, через обмеження доступу до одного з фото). Скористайтеся, будь ласка, звичайним скриншотом — підказка з'явилась нижче.");
+  } finally {
+    wrap.remove();
+  }
 }
 
 function openStashPanel() {
