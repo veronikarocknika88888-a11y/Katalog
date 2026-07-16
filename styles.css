@@ -446,6 +446,29 @@ button { font-family: inherit; cursor: pointer; }
   font-size: 14px;
 }
 
+.screenshot-cta {
+  display: block;
+  margin: 18px auto 0;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  font-size: 14.5px;
+  padding: 12px 28px;
+}
+.screenshot-cta:active { background: var(--accent-dark); }
+
+.screenshot-tip {
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--text-soft);
+}
+
 /* ---------- Phone modal ---------- */
 .phone-modal {
   position: fixed;
